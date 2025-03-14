@@ -183,6 +183,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--output_folder", type=str, default="output_dir")
     parser.add_argument("--target_folder", type=str, default="div2k-val/HR")
+    parser.add_argument("--metrics_save_path", type=str, default="./IQA_results")
     parser.add_argument("--gpu_ids", type=str, default="0")
     args = parser.parse_args()
 
@@ -222,9 +223,9 @@ if __name__ == "__main__":
     folder_name = os.path.basename(args.output_folder)
     parent_folder = os.path.dirname(args.output_folder)
     next_level_folder = os.path.basename(parent_folder)
-    os.makedirs(f"IQA_results", exist_ok=True)
-    average_results_filename = f"IQA_results/{next_level_folder}--{folder_name}.txt"
-    results_filename = f"IQA_results/{next_level_folder}--{folder_name}.csv"
+    os.makedirs(args.metrics_save_path, exist_ok=True)
+    average_results_filename = f"{args.metrics_save_path}/{next_level_folder}--{folder_name}.txt"
+    results_filename = f"{args.metrics_save_path}/{next_level_folder}--{folder_name}.csv"
 
     if results:
         all_keys = set()

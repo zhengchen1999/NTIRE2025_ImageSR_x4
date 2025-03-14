@@ -56,8 +56,15 @@ output_dir
 python eval.py \
 --output_folder "/path/to/your/output_dir" \
 --target_folder "/path/to/test_dir/HR" \
+--metrics_save_path "./IQA_results" \
 --gpu_ids 0 \
 ```
+
+The `eval.py` file accepts the following 4 parameters:
+- `output_folder`: Path where the restored images are saved.
+- `target_folder`: Path to the HR images in the `test` dataset. This is used to calculate FR-IQA metrics.
+- `metrics_save_path`: Directory where the evaluation metrics will be saved.
+- `device`: Computation devices. For multi-GPU setups, use the format `0,1,2,3`.
 
 ## License and Acknowledgement
 This code repository is release under [MIT License](LICENSE). 
