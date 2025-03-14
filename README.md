@@ -3,7 +3,7 @@
 ## How to test the baseline model?
 
 1. `git clone https://github.com/zhengchen1999/NTIRE2025_ImageSR_x4.git`
-2. Select the model you would like to test from [`run.sh`](./run.sh)
+2. Select the model you would like to test:
     ```bash
     CUDA_VISIBLE_DEVICES=0 python eval.py --valid_dir [path to val data dir] --test_dir [path to test data dir] --save_dir [path to your save dir] --model_id 0
     ```
@@ -20,7 +20,7 @@ Edit the `else` to `elif` in [eval.py](./eval.py#L24), and then you can add your
 - `output_path`: a folder contains restored images in PNG format. Please follow the section Folder Structure. 
 - `device`: computation device. 
 
-## How to test images using IQA metrics?
+## How to eval images using IQA metrics?
 
 ### Environments
 
@@ -53,7 +53,7 @@ output_dir
 ### Command to calculate metrics
 
 ```sh
-python test_metrics.py \
+python eval.py \
 --output_folder "/path/to/your/output_dir" \
 --target_folder "/path/to/test_dir/HR" \
 --gpu_ids 0 \
