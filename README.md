@@ -5,13 +5,20 @@
 1. `git clone https://github.com/zhengchen1999/NTIRE2025_ImageSR_x4.git`
 2. Select the model you would like to test from [`run.sh`](./run.sh)
     ```bash
-    CUDA_VISIBLE_DEVICES=0 python eval.py --data_dir [path to your data dir] --save_dir [path to your save dir] --model_id 0
+    CUDA_VISIBLE_DEVICES=0 python eval.py --valid_dir [path to val data dir] --test_dir [path to test data dir] --save_dir [path to your save dir] --model_id 0
     ```
-    - Be sure the change the directories `--data_dir` and `--save_dir`.
-    - We provide three baselines (team00): RFDN (default), SwinIR, and DAT. The code and pretrained models of the three models are provided. Switch models (default is DAT) through commenting the code in [eval.py](./eval.py#L19). Three baselines are all test normally with `run.sh`.
+    - You can use either `--valid_dir`, or `--test_dir`, or both of them. Be sure the change the directories `--valid_dir`/`--test_dir` and `--save_dir`.
+    - We provide a baseline (team00): DAT (default). Switch models (default is DAT) through commenting the code in [eval.py](./eval.py#L19). 
 
 ## How to add your model to this baseline?
-1. TODO
+
+Edit the `else` to `elif` in [eval.py](./eval.py#L24), and then you can add your own model with model id. 
+
+`model_func` should be a function, which accept 4 params. 
+- `model_dir`: the pretrained model. Participants are expected to save their pretrained model in `./model_zoo/` with in a folder named `teamID_MODELNAME`. 
+- `input_path`: a folder contains several images in PNG format. 
+- `output_path`: a folder contains restored images in PNG format. Please follow the section Folder Structure. 
+- `device`: computation device. 
 
 ## How to test images using IQA metrics?
 
