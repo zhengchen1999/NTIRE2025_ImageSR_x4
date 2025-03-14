@@ -12,21 +12,44 @@
 
 ## How to add your model to this baseline?
 1. TODO
-## How to calculate the number of parameters, FLOPs
 
-```python
-    from utils.model_summary import get_model_flops
-    from models.team00_DAT import DAT
-    model = DAT()
+## How to test images using IQA metrics?
+
+### Environments
+
+```sh
+conda create -n NTIRE-SR python=3.8
+conda activate NTIRE-SR
+pip install -r requirements.txt
+```
+
+
+### Folder Structure
+```
+test_dir
+├── HR
+│   ├── 0901.png
+│   ├── 0902.png
+│   ├── ...
+├── LQ
+│   ├── 0901x4.png
+│   ├── 0902x4.png
+│   ├── ...
     
-    input_dim = (3, 256, 256)  # set the input dimension
-    flops = get_model_flops(model, input_dim, False)
-    flops = flops / 10 ** 9
-    print("{:>16s} : {:<.4f} [G]".format("FLOPs", flops))
+output_dir
+├── 0901x4.png
+├── 0902x4.png
+├──...
 
-    num_parameters = sum(map(lambda x: x.numel(), model.parameters()))
-    num_parameters = num_parameters / 10 ** 6
-    print("{:>16s} : {:<.4f} [M]".format("#Params", num_parameters))
+```
+
+### Command to calculate metrics
+
+```sh
+python test_metrics.py \
+--output_folder "/path/to/your/output_dir" \
+--target_folder "/path/to/test_dir/HR" \
+--gpu_ids 0 \
 ```
 
 ## License and Acknowledgement

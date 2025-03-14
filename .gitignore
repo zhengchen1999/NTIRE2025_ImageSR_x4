@@ -13,6 +13,10 @@
 
 # template
 
+# User generates files
+IQA_results/
+data
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -104,6 +108,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+test_demo_backup.py
 
 # Spyder project settings
 .spyderproject
