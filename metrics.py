@@ -184,8 +184,8 @@ if __name__ == "__main__":
     mp.set_start_method('spawn')
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--output_folder", type=str, default="/data2/jkwang/NTIRE2025_ImageSR_x4/results/Test_31_16")
-    parser.add_argument("--target_folder", type=str, default="/data2/jkwang/NTIRE2025_ImageSR_x4/data/Test/HR")
+    parser.add_argument("--output_folder", type=str, default="output_dir")
+    parser.add_argument("--target_folder", type=str, default="div2k-val/HR")
     parser.add_argument("--gpu_ids", type=str, default="0")
     args = parser.parse_args()
 
