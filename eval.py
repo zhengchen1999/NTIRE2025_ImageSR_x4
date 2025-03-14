@@ -147,12 +147,10 @@ def calculate_iqa_for_partition(output_folder, target_folder, output_files, devi
             target_image_path = os.path.join(target_folder, target_file)
             assert os.path.exists(target_image_path), f"No such path: {target_image_path}"
 
-            # 打开图像
             target_image = Image.open(target_image_path)
         else:
             target_image = None
 
-        # 计算 IQA 值
         values = iqa.calculate_values(output_image, target_image)
         values["psnr"], values["ssim"] = util.cal_psnr_ssim(output_image_path, target_image_path)
         if values is not None:
@@ -165,7 +163,6 @@ def main_worker(rank, gpu_id, output_folder, target_folder, output_files, return
     device = torch.device(f"cuda:{gpu_id}" if torch.cuda.is_available() else "cpu")
     print(f"Using Device: {device}")
 
-    # 分割数据
     partition_size = len(output_files) // num_gpus
     start_idx = rank * partition_size
     end_idx = (rank + 1) * partition_size if rank != num_gpus - 1 else len(output_files)
@@ -208,7 +205,6 @@ if __name__ == "__main__":
     print(f"Using GPU: {args.gpu_ids}")
     num_gpus = len(args.gpu_ids)
 
-    # 启动多进程
     processes = []
     for rank, gpu_id in enumerate(args.gpu_ids):
         p = mp.Process(target=main_worker, args=(
@@ -219,7 +215,6 @@ if __name__ == "__main__":
     for p in processes:
         p.join()
 
-    # 合并所有进程的结果
     results = {}
     for rank in return_dict.keys():
         results.update(return_dict[rank])

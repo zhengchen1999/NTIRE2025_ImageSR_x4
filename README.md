@@ -3,17 +3,17 @@
 ## How to test the baseline model?
 
 1. `git clone https://github.com/zhengchen1999/NTIRE2025_ImageSR_x4.git`
-2. Select the model you would like to test from [`run.sh`](./run.sh)
+2. Select the model you would like to test:
     ```bash
-    CUDA_VISIBLE_DEVICES=0 python test.py --data_dir [path to your data dir] --save_dir [path to your save dir] --model_id 0
+    CUDA_VISIBLE_DEVICES=0 python test.py --valid_dir [path to val data dir] --test_dir [path to test data dir] --save_dir [path to your save dir] --model_id 0
     ```
-    - Be sure the change the directories `--data_dir` and `--save_dir`.
-    - We provide three baselines (team00): RFDN (default), SwinIR, and DAT. The code and pretrained models of the three models are provided. Switch models (default is DAT) through commenting the code in [eval.py](./eval.py#L19). Three baselines are all test normally with `run.sh`.
+    - You can use either `--valid_dir`, or `--test_dir`, or both of them. Be sure the change the directories `--valid_dir`/`--test_dir` and `--save_dir`.
+    - We provide the baselines (team00): DAT. The code and pretrained models of the three models are provided. Switch models (default is DAT) through commenting the code in [test.py](./test.py#L19).
 
 ## How to add your model to this baseline?
 1. TODO
 
-## How to test images using IQA metrics?
+## How to eval images using IQA metrics?
 
 ### Environments
 
