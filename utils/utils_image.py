@@ -809,6 +809,16 @@ def imresize_np(img, scale, antialiasing=True):
 
     return out_2.numpy()
 
+def cal_psnr_ssim(hr_path, sr_path, sf=4):
+    img_hr = imread_uint(hr_path, n_channels=3)
+    img_hr = img_hr.squeeze()
+    img_hr = modcrop(img_hr, sf)
+    img_sr = imread_uint(sr_path, n_channels=3)
+    img_sr = img_sr.squeeze()
+    img_sr = modcrop(img_sr, sf)
+    psnr = calculate_psnr(img_sr, img_hr)
+    ssim = calculate_ssim(img_sr, img_hr)
+    return psnr, ssim
 
 if __name__ == '__main__':
     img = imread_uint('test.bmp',3)
