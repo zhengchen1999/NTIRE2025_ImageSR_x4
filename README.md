@@ -5,10 +5,10 @@
 1. `git clone https://github.com/zhengchen1999/NTIRE2025_ImageSR_x4.git`
 2. Select the model you would like to test from [`run.sh`](./run.sh)
     ```bash
-    CUDA_VISIBLE_DEVICES=0 python test_demo.py --data_dir [path to your data dir] --save_dir [path to your save dir] --model_id 0
+    CUDA_VISIBLE_DEVICES=0 python eval.py --data_dir [path to your data dir] --save_dir [path to your save dir] --model_id 0
     ```
     - Be sure the change the directories `--data_dir` and `--save_dir`.
-    - We provide three baselines (team00): RFDN (default), SwinIR, and DAT. The code and pretrained models of the three models are provided. Switch models (default is DAT) through commenting the code in [test_demo.py](./test_demo.py#L19). Three baselines are all test normally with `run.sh`.
+    - We provide three baselines (team00): RFDN (default), SwinIR, and DAT. The code and pretrained models of the three models are provided. Switch models (default is DAT) through commenting the code in [eval.py](./eval.py#L19). Three baselines are all test normally with `run.sh`.
 
 ## How to add your model to this baseline?
 1. TODO
