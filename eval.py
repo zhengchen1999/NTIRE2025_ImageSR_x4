@@ -241,19 +241,43 @@ if __name__ == "__main__":
         for key in all_keys:
             average_results[key] = np.mean([values.get(key, 0) for values in results.values()])
 
-        with open(average_results_filename, 'w') as f:
-            for key, value in average_results.items():
-                f.write(f"{key}: {value}\n")
+        average_results['Total Score'] = 0
+        for metric, value in average_results.items():
+            if metric == 'psnr' or metric == 'ssim' or metric == 'Total Score':
+                continue
+            if metric == 'DISTS':                                     # DISTS is a lower-is-better metric
+                average_results['Total Score'] += (1 - value)
+                print(f"DISTS Score: {1 - value}")
+            elif metric == 'LPIPS':                                   # LPIPS is a lower-is-better metric
+                average_results['Total Score'] += (1 - value)
+                print(f"LPIPS Score: {1 - value}")
+            elif metric == 'NIQE':                                    # NIQE is a lower-is-better metric
+                average_results['Total Score'] += max(0, (10 - value) / 10)   
+                print(f"NIQE Score: {max(0, (10 - value) / 10)}")
+            elif metric == 'CLIP-IQA':
+                average_results['Total Score'] += value
+                print(f"CLIP-IQA Score: {value}")
+            elif metric == 'MANIQA':
+                average_results['Total Score'] += value
+                print(f"MANIQA Score: {value}")
+            elif metric == 'MUSIQ':
+                average_results['Total Score'] += value / 100
+                print(f"MUSIQ Score: {value / 100}")
+            else:
+                print(f"Unknown metric: {metric}")
 
         print("Average:")
         print(average_results)
-
+        
         with open(results_filename, mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(['Filename'] + list(all_keys))
             for filename, values in results.items():
                 row = [filename] + [values.get(key, '') for key in all_keys]
                 writer.writerow(row)
+            print(f"IQA results have been saved to {results_filename} file")
 
-        print(f"IQA results have been saved to {results_filename} file")
-
+        with open(average_results_filename, 'w') as f:
+            for key, value in average_results.items():
+                f.write(f"{key}: {value}\n")
+            print(f"Average IQA results and Weighted Score have been saved to {average_results_filename} file")
