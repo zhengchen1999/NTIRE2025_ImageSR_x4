@@ -93,6 +93,7 @@ The `eval.py` file accepts the following 4 parameters:
 ### Weighted score for Perception Quality Track
 
 We use the following equation to calculate the final weight score: 
+
 $$
 \text{Score} = \left(1 - \text{LPIPS}\right) + \left(1 - \text{DISTS}\right) + \text{CLIPIQA} + \text{MANIQA} + \frac{\text{MUSIQ}}{100} + \max\left(0, \frac{10 - \text{NIQE}}{10}\right). 
 $$
