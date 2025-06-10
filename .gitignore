@@ -1,4 +1,5 @@
 .vscode
+worksheet/
 
 # ignored files with suffix
 *.html

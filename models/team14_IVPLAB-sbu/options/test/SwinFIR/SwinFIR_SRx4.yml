@@ -1,0 +1,89 @@
+name: SwinWSR_SRx4
+model_type: SwinFIRModel
+scale: 4
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 0
+
+datasets:
+  test_1:  # the 1st test dataset
+    name: Set5
+    type: PairedImageDataset
+    dataroot_gt: ./datasets/DIV2K/HR
+    dataroot_lq: ./datasets/DIV2K/DIV2K_valid_LR_bicubic/X4
+    io_backend:
+      type: disk
+
+  # test_2:  # the 2nd test dataset
+  #   name: Set14
+  #   type: PairedImageDataset
+  #   dataroot_gt: ./datasets/DIV2K/valid_HR
+  #   dataroot_lq: ./datasets/DIV2K/valid_LR/X4
+  #   io_backend:
+  #     type: disk
+
+      #test_3:
+      #name: Urban100
+      #type: PairedImageDataset
+      #dataroot_gt: ./datasets/Urban100/HR
+      #dataroot_lq: ./datasets/Urban100/LR_bicubic/X4
+      #io_backend:
+      #type: disk
+
+      #test_4:
+      #name: BSD100
+      #type: PairedImageDataset
+      #dataroot_gt: ./datasets/BSD100/HR
+      #dataroot_lq: ./datasets/BSD100/LR_bicubic/X4
+      #io_backend:
+      #type: disk
+
+  # test_5:
+      # name: Manga109
+      # type: PairedImageDataset
+      # dataroot_gt: ./datasets/manga109/GTmod4
+      # dataroot_lq: ./datasets/manga109/LRbicx4
+      # io_backend:
+      #   type: disk
+
+# network structures
+network_g:
+  type: SwinFIR
+  upscale: 4
+  in_chans: 3
+  img_size: 60
+  window_size: 12
+  img_range: 1.
+  depths: [6, 6, 6, 6, 6, 6]
+  embed_dim: 180
+  num_heads: [6, 6, 6, 6, 6, 6]
+  mlp_ratio: 2
+  upsampler: 'pixelshuffle'
+  resi_connection: 'transformattention'
+
+
+# path
+path:
+  pretrain_network_g: /home/kailiu/data/NTIRE2025/Team-14/NTIRE2025_ImageSR_x4_SwinSTASR-main/model_zoo/team14_SwinSTASR/team14_SwinSTASR.pth
+  strict_load_g: true
+  param_key_g: 'params_ema'
+
+# validation settings
+val:
+  save_img: true
+  suffix: ~  # add suffix to saved images, if None, use exp name
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 4
+      test_y_channel: true
+    ssim:
+      type: calculate_ssim
+      crop_border: 4
+      test_y_channel: true
+    lpips:
+      type: calculate_lpips
+      crop_border: 4
+      test_y_channel: true
+      better: lower   # the lower, the better
+

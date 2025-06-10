@@ -1,48 +1,46 @@
 # [NTIRE 2025 Challenge on Image Super-Resolution (x4)](https://cvlai.net/ntire/2025/) @ [CVPR 2025](https://cvpr.thecvf.com/)
 
-## How to test the baseline model?
+## How to test the model?
 
 1. `git clone https://github.com/zhengchen1999/NTIRE2025_ImageSR_x4.git`
-2. Select the model you would like to test:
+2. Download the model weights from [Baidu Pan](https://pan.baidu.com/s/1iqaonrwEQVTbqp-1IcrhAg?pwd=SRSR ) with validation code:SRSR. Put the downloaded weights in the `./model_zoo` folder.
+3. Select the model you would like to test:
     ```bash
     CUDA_VISIBLE_DEVICES=0 python test.py --valid_dir [path to val data dir] --test_dir [path to test data dir] --save_dir [path to your save dir] --model_id 0
     ```
     - You can use either `--valid_dir`, or `--test_dir`, or both of them. Be sure the change the directories `--valid_dir`/`--test_dir` and `--save_dir`.
     - We provide a baseline (team00): DAT (default). Switch models (default is DAT) through commenting the code in [test.py](./test.py#L19).
+4. We also provide the output of each team in [Baidu Pan]( https://pan.baidu.com/s/1Ah6il9Sfe3hkRP8_Nv5KXw?pwd=SRSR) with validation code:SRSR. You can directly download the output of each team and evaluate the model using the provided script.
+5. Some methods cannot be integrated into our codebase. We provide their instructions in the corresponding folder. If you still fail to test the model, please contact the team leaders. Their contact information is as follows:
 
-## How to add your model to this baseline?
-
-**🚨 Submissions that do not follow the official format will be rejected.**
-
-1. Register your team in the [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1j6Rzt6St70lqbYi0f74le9qDiouj5suF35xOm2o5C9I/edit?usp=sharing) and get your team ID.
-
-2. Put your the code of your model in folder:  `./models/[Your_Team_ID]_[Your_Model_Name]`
-
-   - Please zero pad [Your_Team_ID] into two digits: e.g. 00, 01, 02
-
-3. Put the pretrained model in folder: `./model_zoo/[Your_Team_ID]_[Your_Model_Name]`
-
-   - Please zero pad [Your_Team_ID] into two digits: e.g. 00, 01, 02
-   - Note: Please provide a download link for the pretrained model, if the file size exceeds **100 MB**. Put the link in `./model_zoo/[Your_Team_ID]_[Your_Model_Name]/[Your_Team_ID]_[Your_Model_Name].txt`: e.g. [team00_dat.txt](./model_zoo/team00_dat/team00_dat.txt)
-
-4. Add your model to the model loader `test.py` as follows:
-
-   - Edit the `else` to `elif` in [test.py](./test.py#L24), and then you can add your own model with model id.
-
-   - `model_func` **must** be a function, which accept **4 params**. 
-
-     - `model_dir`: the pretrained model. Participants are expected to save their pretrained model in `./model_zoo/` with in a folder named `[Your_Team_ID]_[Your_Model_Name]` (e.g., team00_dat). 
-
-     - `input_path`: a folder contains several images in PNG format. 
-
-     - `output_path`: a folder contains restored images in PNG format. Please follow the section Folder Structure. 
-
-     - `device`: computation device.
-
-5. Send us the command to download your code, e.g,
-
-   - `git clone [Your repository link]`
-   - We will add your code and model checkpoint to the repository after the challenge.
+| Index |       Team      |            Leader            |              Email              |
+|:-----:|:---------------:|:----------------------------:|:-------------------------------:|
+|   1   | SamsungAICamera |         Xiangyu Kong         |     xiangyu.kong@samsung.com    |
+|   2   |      SNUCV      |         Donghun Ryou         |         dhryou@snu.ac.kr        |
+|   3   |       BBox      |            Lu Zhao           |       zlcossiel@gmail.com       |
+|   4   |     XiaomiMM    |          Hongyuan Yu         |      yuhyuan1995@gmail.com      |
+|   5   |     MicroSR     |          Yanhui Guo          |       guoy143@mcmaster.ca       |
+|   6   |     NJU_MCG     |            Xin Liu           |   xinliu2023@smail.nju.edu.cn   |
+|   7   |       X-L       |           Zeyu Xiao          |    zeyuxiao@mail.ustc.edu.cn    |
+|   8   |    Endeavour    |        Yinxiang Zhang        |  zhangyinxiang@mail.nwpu.edu.cn |
+|   9   |   KLETech-CEVI  | Vijayalaxmi Ashok Aralikatti |    01fe21bcs181@kletech.ac.in   |
+|   10  |     CidautAi    |        Marcos V. Conde       |  marcos.conde@uni-wuerzburg.de  |
+|   11  |      JNU620     |          Weijun Yuan         |    yweijun@stu2022.jnu.edu.cn   |
+|   12  |     CV_SVNIT    |          Aagam Jain          |    aagamjainaj1805@gmail.com    |
+|   13  |      ACVLAB     |         Chia-Ming Lee        |      zuw408421476@gmail.com     |
+|   14  |     HyperPix    |      Risheek V Hiremath      |   hiremathrisheek745@gmail.com  |
+|   15  |      BVIVSR     |         Yuxuan Jiang         |      dd22654@bristol.ac.uk      |
+|   16  |      AdaDAT     |         Jingwei Liao         |          jliao2@gmu.edu         |
+|   17  |      Junyi      |          Junyi Zhao          |      z15236936309@gmail.com     |
+|   18  |     ML_SVNIT    |          Ankit Kumar         |    ankitkumar735226@gmail.com   |
+|   19  |     SAK_DCU     |      Sunder Ali Khowaja      |     sunderali.khowaja@dcu.ie    |
+|   20  |      VAI-GM     |      Snehal Singh Tomar      |     stomar@cs.stonybrook.edu    |
+|   21  |   Quantum Res   |       Sachin Chaudhary       | sachin.chaudhary@ddn.upes.ac.in |
+|   22  |       PSU       |        Bilel Benjdira        |       bbenjdira@psu.edu.sa      |
+|   23  |    IVPLAB-sbu   |        Zahra Moammeri        |     zahramoammeri1@gmail.com    |
+|   24  |      MCMIR      |          Liangyan Li         |        lil61@mcmaster.ca        |
+|   25  |     Aimanga     |         Zonghao Chen         |  chenzonghao@k-fashionshop.com  |
+|   26  |       IPCV      |      Jameer Babu Pinjari     |       jameer.jb@gmail.com       |
 
 ## How to eval images using IQA metrics?
 
