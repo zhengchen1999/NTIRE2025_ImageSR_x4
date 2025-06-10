@@ -3,14 +3,24 @@
 ## How to test the model?
 
 1. `git clone https://github.com/zhengchen1999/NTIRE2025_ImageSR_x4.git`
-2. Download the model weights from [Baidu Pan](https://pan.baidu.com/s/1iqaonrwEQVTbqp-1IcrhAg?pwd=SRSR ) with validation code:SRSR. Put the downloaded weights in the `./model_zoo` folder.
+2. Download the model weights from:
+
+    - [Baidu Pan](https://pan.baidu.com/s/1iqaonrwEQVTbqp-1IcrhAg?pwd=SRSR) (validation code: **SRSR**)
+    - [Google Drive](https://drive.google.com/drive/folders/18ePdU3ZZO3Tk9meqSmP-Yrkv-OU-RLbE?usp=drive_link)
+
+    Put the downloaded weights in the `./model_zoo` folder.
 3. Select the model you would like to test:
     ```bash
     CUDA_VISIBLE_DEVICES=0 python test.py --valid_dir [path to val data dir] --test_dir [path to test data dir] --save_dir [path to your save dir] --model_id 0
     ```
     - You can use either `--valid_dir`, or `--test_dir`, or both of them. Be sure the change the directories `--valid_dir`/`--test_dir` and `--save_dir`.
     - We provide a baseline (team00): DAT (default). Switch models (default is DAT) through commenting the code in [test.py](./test.py#L19).
-4. We also provide the output of each team in [Baidu Pan]( https://pan.baidu.com/s/1Ah6il9Sfe3hkRP8_Nv5KXw?pwd=SRSR) with validation code:SRSR. You can directly download the output of each team and evaluate the model using the provided script.
+4. We also provide the output of each team from:
+
+    - [Baidu Pan](https://pan.baidu.com/s/1Ah6il9Sfe3hkRP8_Nv5KXw?pwd=SRSR) (validation code: **SRSR**)
+    - [Google Drive](https://drive.google.com/drive/folders/1R32G2xEWh-igZTkEvpcMg7jX5BGqSQeg?usp=drive_link)
+
+    You can directly download the output of each team and evaluate the model using the provided script.
 5. Some methods cannot be integrated into our codebase. We provide their instructions in the corresponding folder. If you still fail to test the model, please contact the team leaders. Their contact information is as follows:
 
 | Index |       Team      |            Leader            |              Email              |
