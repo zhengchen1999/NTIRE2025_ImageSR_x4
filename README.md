@@ -178,7 +178,7 @@ If you find the code helpful in your research or work, please cite the following
   year={2023}
 }
 
-@inproceedings{ntire2022srx4,
+@inproceedings{ntire2024srx4,
   title={Ntire 2024 challenge on image super-resolution (x4): Methods and results},
   author={Chen, Zheng and Wu, Zongwei and Zamfir, Eduard and Zhang, Kai and Zhang, Yulun and Timofte, Radu and others},
   booktitle={CVPRW},
