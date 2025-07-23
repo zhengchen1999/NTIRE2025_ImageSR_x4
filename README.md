@@ -2,6 +2,7 @@
 
 [![ntire](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Fzhengchen1999%2FNTIRE2025_ImageSR_x4%2Fmain%2Ffigs%2Fdiamond_badge.json)](https://www.cvlai.net/ntire/2025/)
 [![page](https://img.shields.io/badge/Project-Page-blue?logo=github&logoSvg)](https://ntire-sr.github.io/)
+[![CVPRW](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Fzhengchen1999%2FNTIRE2025_RealWorld_Face_Restoration%2Fmain%2Ffigs%2Fcvf_badge.json)](https://openaccess.thecvf.com/content/CVPR2025W/NTIRE/html/Chen_NTIRE_2025_Challenge_on_Image_Super-Resolution_x4_Methods_and_Results_CVPRW_2025_paper.html)
 [![arXiv](https://img.shields.io/badge/Report-arXiv-red?logo=arxiv&logoSvg)](https://arxiv.org/pdf/2504.14582)
 [![supp](https://img.shields.io/badge/Supplementary-Paper-orange.svg)](https://github.com/zhengchen1999/NTIRE2025_ImageSR_x4/releases/download/Supp/NTIRE.2025.Image.Super.Resolution.x4.Supplementary.pdf)
 [![visitors](https://visitor-badge.laobi.icu/badge?page_id=zhengchen1999.NTIRE2025_ImageSR_x4&right_color=violet)](https://github.com/zhengchen1999/NTIRE2025_ImageSR_x4)
