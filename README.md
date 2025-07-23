@@ -186,7 +186,7 @@ If you find the code helpful in your research or work, please cite the following
 }
 
 @inproceedings{ntire2025srx4,
-  title={NTIRE 2025 challenge on real-world face restoration: Methods and results},
+  title={NTIRE 2025 Challenge on Image Super-Resolution (x4): Methods and Results},
   author={Chen, Zheng and Liu, Kai and Gong, Jue and Wang, Jingkai and Sun, Lei and Wu, Zongwei and Timofte, Radu and Zhang, Yulun and others},
   booktitle={CVPRW},
   year={2025}
